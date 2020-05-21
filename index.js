@@ -6,6 +6,8 @@ const app = express();
 // Setting the Value for the property "View Engine" as "Ejs" (Setting Up View engine)
 app.set('view engine', 'ejs');
 app.set('views', './views');
+app.use(express.urlencoded());
+app.use(express.static('assets'))
 
 var toDoList = [
     {
@@ -27,6 +29,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/create-todo', function(req, res) {
+    toDoList.push(req.body);
+    
     return res.redirect('back');
 });
 
