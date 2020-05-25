@@ -14,7 +14,7 @@
     </header>
     <div id="date"></div>
     <form action="/create-todo" method="POST">
-        <input type="text" class="todo-input" name="todo" placeholder="Add ToDo.." required>
+        <input type="text" class="todo-input" name="name" placeholder="Add ToDo.." required>
         <button class="todo-button" type="submit">
             <i class="fas fa-plus-circle"></i>
         </button>
@@ -24,16 +24,23 @@
     <div class="todo-container">
         <ul class="todo-list">
             <% for(let i of todo_list) { %>
-                <div class="todo">
-                    <button class="complete-btn">
-                        <i class="fas fa-check"></i>
-                    </button>
-                        <li class="todo-item">
-                            <p><%= i.todo %></p>
-                        </li>
-                    <button class="trash-btn">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                <div class="todo-card">
+                    <div class="todo">
+                        <button class="complete-btn">
+                            <i class="fas fa-check"></i>
+                        </button>
+                            <li class="todo-item">
+                                <p><%= i.task %></p>
+                            </li>
+                        <button class="trash-btn">
+                            <a href="/delete-contact/?id=<%= i._id %>">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </button>
+                    </div>
+                    <div class="todo-details">
+                        <p>Div 2</p>
+                    </div>
                 </div>
             <% } %>
         </ul>
